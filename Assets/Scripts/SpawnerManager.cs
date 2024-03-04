@@ -6,9 +6,11 @@ public class SpawnerManager : MonoBehaviour
 {
     [SerializeField]
     private List<SpawnObstacleScript> spawners = new List<SpawnObstacleScript>();
+    public List<Color> colors = new List<Color>();
     private float spawnTimer = 0f;
     [SerializeField]
     private float spawnInterval = 1.5f;
+    [SerializeField]
 
 
     private void Awake()
@@ -49,6 +51,12 @@ public class SpawnerManager : MonoBehaviour
     {
         Debug.Log("Spawning obstacle");
         int randomIndex = Random.Range(0, spawners.Count);
-        spawners[randomIndex].SpawnObstacle();
+        Color color = RandomColor();
+        spawners[randomIndex].SpawnObstacle(color);
+    }
+    private Color RandomColor()
+    {
+        Color color = colors[Random.Range(0, colors.Count)];
+        return color;
     }
 }

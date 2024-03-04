@@ -12,8 +12,10 @@ public class Obstacle : MonoBehaviour
         targetObject = GameObject.FindGameObjectWithTag("Cube");
         direction = (targetObject.transform.position - transform.position).normalized;
         transform.LookAt(targetObject.transform);
-        GetComponent<Renderer>().material.color = obstacleColor;
-
+    }
+    private void Start()
+    {
+        obstacleColor = GetComponent<Renderer>().material.color;
     }
 
     private void Update()

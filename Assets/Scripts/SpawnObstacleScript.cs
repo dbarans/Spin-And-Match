@@ -6,10 +6,19 @@ public class SpawnObstacleScript : MonoBehaviour
 {
     [SerializeField]
     private GameObject obstaclePrefab;
+    private SpawnerManager spawnerManager;
 
-    
-    public void SpawnObstacle()
+    private void Awake()
     {
-        Instantiate(obstaclePrefab, transform.position, Quaternion.identity);
+        spawnerManager = FindObjectOfType<SpawnerManager>();
+        spawnerManager.AddSpawner(this);
     }
+
+    public void SpawnObstacle(Color color)
+    {
+        GameObject spawnedObstacle = Instantiate(obstaclePrefab, transform.position, Quaternion.identity);
+        Renderer renderer = spawnedObstacle.GetComponent<Renderer>();
+        renderer.material.color = color;
+        
+     }
 }
