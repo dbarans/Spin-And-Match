@@ -6,6 +6,9 @@ public class SpawnerManager : MonoBehaviour
 {
     [SerializeField]
     private List<SpawnObstacleScript> spawners = new List<SpawnObstacleScript>();
+    private float spawnTimer = 0f;
+    [SerializeField]
+    private float spawnInterval = 1.5f;
 
 
     private void Awake()
@@ -26,8 +29,26 @@ public class SpawnerManager : MonoBehaviour
             }
         }
     }
+
+    private void Update()
+    {
+        spawnTimer += Time.deltaTime;
+
+        if (spawnTimer >= spawnInterval)
+        {
+            SpawnObstacle();
+            spawnTimer = 0f;
+        }
+    }
     public void AddSpawner(SpawnObstacleScript spawner)
     {
         spawners.Add(spawner);
+    }
+
+    public void SpawnObstacle()
+    {
+        Debug.Log("Spawning obstacle");
+        int randomIndex = Random.Range(0, spawners.Count);
+        spawners[randomIndex].SpawnObstacle();
     }
 }

@@ -8,8 +8,7 @@ public class SpawnObstacleScript : MonoBehaviour
     private GameObject obstaclePrefab;
 
     
-
-    void SpawnObstacle()
+    public void SpawnObstacle()
     {
         Instantiate(obstaclePrefab, transform.position, Quaternion.identity);
     }
