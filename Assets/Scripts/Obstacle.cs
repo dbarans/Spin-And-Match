@@ -2,15 +2,19 @@ using UnityEngine;
 
 public class Obstacle : MonoBehaviour
 {
-    public GameObject targetObject;
+    private GameObject targetObject;
     public float moveSpeed = 5f;
     private Vector3 direction;
     public Color obstacleColor;
 
     private void Awake()
     {
+        
+        targetObject = GameObject.FindGameObjectWithTag("Cube");
         direction = (targetObject.transform.position - transform.position).normalized;
+        transform.LookAt(targetObject.transform);
         GetComponent<Renderer>().material.color = obstacleColor;
+
     }
     private void Update()
     {
