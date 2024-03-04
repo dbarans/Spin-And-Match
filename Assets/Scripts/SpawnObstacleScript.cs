@@ -2,15 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawneObstacle : MonoBehaviour
+public class SpawnObstacleScript : MonoBehaviour
 {
     [SerializeField]
     private GameObject obstaclePrefab;
 
-    void Start()
-    {
-        SpawnObstacle();
-    }
+    
 
     void SpawnObstacle()
     {
