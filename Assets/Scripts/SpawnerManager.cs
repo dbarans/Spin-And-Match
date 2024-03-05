@@ -49,7 +49,6 @@ public class SpawnerManager : MonoBehaviour
 
     public void SpawnObstacle()
     {
-        Debug.Log("Spawning obstacle");
         int randomIndex = Random.Range(0, spawners.Count);
         Color color = RandomColor();
         spawners[randomIndex].SpawnObstacle(color);

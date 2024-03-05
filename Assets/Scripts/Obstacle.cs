@@ -35,7 +35,7 @@ public class Obstacle : MonoBehaviour
            gameManager.SameColorCollision();
         } else
         { 
-            gameManager.DifferentColorCollision();
+           gameManager.DifferentColorCollision();
         }
         Destroy(gameObject);
     }

@@ -1,13 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    //[HideInInspector]
+    [HideInInspector]
     public int points = 0;
-   // [HideInInspector]
+    [HideInInspector]
     public int health = 3;
+    [SerializeField]
+    private TextMeshProUGUI pointsText;
+    [SerializeField]
+    private TextMeshProUGUI healthText;
 
 
     private void Awake()
@@ -17,9 +20,15 @@ public class GameManager : MonoBehaviour
     public void SameColorCollision()
     {
         points++;
+        pointsText.text = "Points: " + points;
     }
     public void DifferentColorCollision()
     {
         health--;
+        healthText.text = "Health: " + health;
+        if (health < 1)
+        {
+            Debug.Log("Game Over");
+        }
     }
 }
