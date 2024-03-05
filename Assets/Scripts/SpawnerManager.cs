@@ -31,6 +31,10 @@ public class SpawnerManager : MonoBehaviour
             }
         }
     }
+    private void Start()
+    {
+        SpawnObstacle();
+    }
 
     private void Update()
     {

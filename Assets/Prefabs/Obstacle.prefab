@@ -146,5 +146,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edc60ca48e3ab6a40b8da4f4e8761d2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
+  moveSpeed: 2
   obstacleColor: {r: 1, g: 1, b: 1, a: 1}
