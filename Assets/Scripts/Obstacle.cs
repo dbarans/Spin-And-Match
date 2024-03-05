@@ -6,10 +6,12 @@ public class Obstacle : MonoBehaviour
     public float moveSpeed = 5f;
     private Vector3 direction;
     public Color obstacleColor;
+    private GameManager gameManager;
 
     private void Awake()
     { 
         targetObject = GameObject.FindGameObjectWithTag("Cube");
+        gameManager = FindObjectOfType<GameManager>();
         direction = (targetObject.transform.position - transform.position).normalized;
         transform.LookAt(targetObject.transform);
     }
@@ -30,7 +32,11 @@ public class Obstacle : MonoBehaviour
 
         if (objectColor == obstacleColor)
         {
-           Destroy(gameObject);
+           gameManager.SameColorCollision();
+        } else
+        { 
+            gameManager.DifferentColorCollision();
         }
+        Destroy(gameObject);
     }
 }
