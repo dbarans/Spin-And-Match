@@ -1,10 +1,24 @@
+using System.Collections.Generic;
 using UnityEngine;
 
-public class RotateCube : MonoBehaviour
+public class Cube : MonoBehaviour
 {
     public float rotationSpeed = 360f;
     private bool isRotating = false;
     private Quaternion targetRotation;
+    private SpawnerManager spawnerManager;
+    private GameObject[] walls;
+
+    private void Awake()
+    {
+        spawnerManager = FindObjectOfType<SpawnerManager>();
+        walls = GameObject.FindGameObjectsWithTag("Wall");
+
+        for (int i = 0; i < walls.Length; i++)
+        {
+            walls[i].GetComponent<MeshRenderer>().material.color = spawnerManager.colors[i];
+        }
+    }
 
     void Update()
     {
