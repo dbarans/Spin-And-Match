@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Cube : MonoBehaviour
 {
-    public float rotationSpeed = 360f;
+    public float rotationSpeed;
     private bool isRotating = false;
     private Quaternion targetRotation;
     private SpawnerManager spawnerManager;
@@ -48,6 +48,14 @@ public class Cube : MonoBehaviour
             else if (Input.GetKeyDown(KeyCode.S))
             {
                 RotateObjectByAngle(-90f, Vector3.forward);
+            }
+            else if (Input.GetKeyDown(KeyCode.E))
+            {
+                RotateObjectByAngle(90f, Vector3.right);
+            }
+            else if (Input.GetKeyDown(KeyCode.Q))
+            {
+                RotateObjectByAngle(-90f, Vector3.right);
             }
         }
     }
