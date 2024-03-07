@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour
     private GameObject startPanel;
     [HideInInspector]
     public bool gameStarted = false;
+    [SerializeField]
+    private HeartBar heartBar;
 
 
     private void Awake()
@@ -45,6 +47,7 @@ public class GameManager : MonoBehaviour
     public void DifferentColorCollision()
     {
         health--;
+        heartBar.UpdateHearts();
         if (health < 1)
         {
             Debug.Log("Game Over");
