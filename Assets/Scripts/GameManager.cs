@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour
     public bool gameStarted = false;
     [SerializeField]
     private HeartBar heartBar;
+    [HideInInspector]
+    public bool isGameOver = false;
 
 
     private void Awake()
@@ -50,7 +52,8 @@ public class GameManager : MonoBehaviour
         heartBar.UpdateHearts();
         if (health < 1)
         {
-            Debug.Log("Game Over");
+            isGameOver = false;
+            Time.timeScale = 0;
         }
     }
 }
