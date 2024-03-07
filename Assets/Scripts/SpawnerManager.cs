@@ -35,6 +35,7 @@ public class SpawnerManager : MonoBehaviour
     {
         SpawnObstacle();
     }
+    
 
     private void Update()
     {
