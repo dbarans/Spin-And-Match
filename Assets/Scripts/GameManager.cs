@@ -10,8 +10,6 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI pointsText;
     [SerializeField]
-    private TextMeshProUGUI healthText;
-    [SerializeField]
     private GameObject gamePanel;
     [SerializeField]
     private GameObject startPanel;
@@ -47,7 +45,6 @@ public class GameManager : MonoBehaviour
     public void DifferentColorCollision()
     {
         health--;
-        healthText.text = "Health: " + health;
         if (health < 1)
         {
             Debug.Log("Game Over");
