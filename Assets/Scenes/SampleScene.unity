@@ -820,7 +820,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &738818594
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1450,6 +1450,7 @@ MonoBehaviour:
   - {r: 0.15325737, g: 0.47160178, b: 0.7924528, a: 1}
   - {r: 0.51959896, g: 0.15873085, b: 0.8207547, a: 1}
   spawnInterval: 2.5
+  gameManager: {fileID: 1614007648}
 --- !u!4 &1614007647
 Transform:
   m_ObjectHideFlags: 0
@@ -1481,6 +1482,9 @@ MonoBehaviour:
   health: 3
   pointsText: {fileID: 1654495189}
   healthText: {fileID: 1927485426}
+  gamePanel: {fileID: 1871334653}
+  startPanel: {fileID: 738818593}
+  gameStarted: 0
 --- !u!1 &1654495187
 GameObject:
   m_ObjectHideFlags: 0
@@ -1782,7 +1786,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1871334654
 RectTransform:
   m_ObjectHideFlags: 0

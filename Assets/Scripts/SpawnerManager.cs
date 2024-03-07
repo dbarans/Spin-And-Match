@@ -7,10 +7,11 @@ public class SpawnerManager : MonoBehaviour
     [SerializeField]
     private List<SpawnObstacleScript> spawners = new List<SpawnObstacleScript>();
     public List<Color> colors = new List<Color>();
-    private float spawnTimer = 0f;
+    private float spawnTimer = 2f;
     [SerializeField]
     private float spawnInterval = 1.5f;
     [SerializeField]
+    private GameManager gameManager;
 
 
     private void Awake()
@@ -31,21 +32,20 @@ public class SpawnerManager : MonoBehaviour
             }
         }
     }
-    private void Start()
-    {
-        SpawnObstacle();
-    }
-    
 
     private void Update()
     {
-        spawnTimer += Time.deltaTime;
-
-        if (spawnTimer >= spawnInterval)
+        if (gameManager.gameStarted)
         {
-            SpawnObstacle();
-            spawnTimer = 0f;
+            spawnTimer += Time.deltaTime;
+
+            if (spawnTimer >= spawnInterval)
+            {
+                SpawnObstacle();
+                spawnTimer = 0f;
+            }
         }
+        
     }
     public void AddSpawner(SpawnObstacleScript spawner)
     {

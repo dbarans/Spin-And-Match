@@ -11,12 +11,34 @@ public class GameManager : MonoBehaviour
     private TextMeshProUGUI pointsText;
     [SerializeField]
     private TextMeshProUGUI healthText;
+    [SerializeField]
+    private GameObject gamePanel;
+    [SerializeField]
+    private GameObject startPanel;
+    [HideInInspector]
+    public bool gameStarted = false;
 
 
     private void Awake()
     {
         Application.targetFrameRate = 120;
     }
+    private void Start()
+    {
+        gamePanel.SetActive(false);
+        startPanel.SetActive(true);
+    }
+
+    private void Update()
+    {
+        if (Input.anyKeyDown && !gameStarted)
+        {
+            startPanel.SetActive(false);
+            gamePanel.SetActive(true);
+            gameStarted = true;
+        }
+    }
+
     public void SameColorCollision()
     {
         points++;
