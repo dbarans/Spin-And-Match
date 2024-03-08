@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour
     private GameObject gamePanel;
     [SerializeField]
     private GameObject startPanel;
+    [SerializeField]
+    private GameObject endPanel;
     [HideInInspector]
     public bool gameStarted = false;
     [SerializeField]
@@ -31,6 +33,7 @@ public class GameManager : MonoBehaviour
     {
         gamePanel.SetActive(false);
         startPanel.SetActive(true);
+        endPanel.SetActive(false);
     }
 
     private void Update()
@@ -40,6 +43,11 @@ public class GameManager : MonoBehaviour
             startPanel.SetActive(false);
             gamePanel.SetActive(true);
             gameStarted = true;
+        }
+        if(isGameOver && Input.anyKeyDown)
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+            gamePanel.SetActive(false);
         }
         spawnerManager.UpdateSpawnerInterval(); 
     }
@@ -55,10 +63,17 @@ public class GameManager : MonoBehaviour
         heartBar.UpdateHearts();
         if (health < 1)
         {
-            isGameOver = false;
-            Time.timeScale = 0;
+            GameOver();
         }
     }
+    private void GameOver()
+    {
+        isGameOver = true;
+        Time.timeScale = 0;
+        endPanel.SetActive(true);
+        gamePanel.SetActive(false);
+    }   
+    
 
     
 }

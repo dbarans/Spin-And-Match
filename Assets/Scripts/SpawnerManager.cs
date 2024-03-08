@@ -11,7 +11,8 @@ public class SpawnerManager : MonoBehaviour
     public float spawnInterval = 1.5f;
     [SerializeField]
     private GameManager gameManager;
-    private bool isSpawnerIntervalChanged = true;
+    [HideInInspector]
+    public bool isSpawnerIntervalChanged = true;
 
 
     private void Awake()
