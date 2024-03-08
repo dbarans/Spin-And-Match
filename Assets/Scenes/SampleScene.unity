@@ -1756,6 +1756,8 @@ MonoBehaviour:
   startPanel: {fileID: 738818593}
   gameStarted: 0
   heartBar: {fileID: 81923575}
+  isGameOver: 0
+  spawnerManager: {fileID: 1614007646}
 --- !u!1 &1654495187
 GameObject:
   m_ObjectHideFlags: 0

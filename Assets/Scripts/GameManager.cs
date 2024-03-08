@@ -19,6 +19,8 @@ public class GameManager : MonoBehaviour
     private HeartBar heartBar;
     [HideInInspector]
     public bool isGameOver = false;
+    [SerializeField]
+    private SpawnerManager spawnerManager;
 
 
     private void Awake()
@@ -39,6 +41,7 @@ public class GameManager : MonoBehaviour
             gamePanel.SetActive(true);
             gameStarted = true;
         }
+        spawnerManager.UpdateSpawnerInterval(); 
     }
 
     public void SameColorCollision()
@@ -56,4 +59,6 @@ public class GameManager : MonoBehaviour
             Time.timeScale = 0;
         }
     }
+
+    
 }

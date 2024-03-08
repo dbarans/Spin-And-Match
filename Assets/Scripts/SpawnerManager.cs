@@ -8,15 +8,15 @@ public class SpawnerManager : MonoBehaviour
     private List<SpawnObstacleScript> spawners = new List<SpawnObstacleScript>();
     public List<Color> colors = new List<Color>();
     private float spawnTimer = 2f;
-    [SerializeField]
-    private float spawnInterval = 1.5f;
+    public float spawnInterval = 1.5f;
     [SerializeField]
     private GameManager gameManager;
+    private bool isSpawnerIntervalChanged = true;
 
 
     private void Awake()
     {
-        
+
         GameObject[] spawnerObjects = GameObject.FindGameObjectsWithTag("Spawner");
 
         foreach (GameObject spawnerObject in spawnerObjects)
@@ -45,7 +45,7 @@ public class SpawnerManager : MonoBehaviour
                 spawnTimer = 0f;
             }
         }
-        
+
     }
     public void AddSpawner(SpawnObstacleScript spawner)
     {
@@ -58,9 +58,27 @@ public class SpawnerManager : MonoBehaviour
         Color color = RandomColor();
         spawners[randomIndex].SpawnObstacle(color);
     }
+
     private Color RandomColor()
     {
         Color color = colors[Random.Range(0, colors.Count)];
         return color;
+    }
+
+    public void UpdateSpawnerInterval()
+    {
+        int pointsToChangeInterval = 3;
+        if (!isSpawnerIntervalChanged && gameManager.points % pointsToChangeInterval == 0)
+        {
+            if (spawnInterval > 1f)
+            {
+                spawnInterval -= 0.1f;
+            }
+            isSpawnerIntervalChanged = true;
+        }
+        if (isSpawnerIntervalChanged && gameManager.points % pointsToChangeInterval != 0)
+        {
+            isSpawnerIntervalChanged = false;
+        }
     }
 }
