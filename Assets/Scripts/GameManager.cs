@@ -23,6 +23,8 @@ public class GameManager : MonoBehaviour
     public bool isGameOver = false;
     [SerializeField]
     private SpawnerManager spawnerManager;
+    [SerializeField]
+    private TextMeshProUGUI endScoreText;
 
 
     private void Awake()
@@ -40,6 +42,7 @@ public class GameManager : MonoBehaviour
     {
         if (Input.anyKeyDown && !gameStarted)
         {
+            Time.timeScale = 1;
             startPanel.SetActive(false);
             gamePanel.SetActive(true);
             gameStarted = true;
@@ -47,7 +50,6 @@ public class GameManager : MonoBehaviour
         if(isGameOver && Input.anyKeyDown)
         {
             UnityEngine.SceneManagement.SceneManager.LoadScene(0);
-            gamePanel.SetActive(false);
         }
         spawnerManager.UpdateSpawnerInterval(); 
     }
@@ -72,6 +74,8 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0;
         endPanel.SetActive(true);
         gamePanel.SetActive(false);
+        endScoreText.text = "Score: " + points;
+
     }   
     
 

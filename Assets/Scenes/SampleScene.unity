@@ -2317,6 +2317,7 @@ MonoBehaviour:
   heartBar: {fileID: 81923575}
   isGameOver: 0
   spawnerManager: {fileID: 1614007646}
+  endScoreText: {fileID: 830393810}
 --- !u!1 &1654495187
 GameObject:
   m_ObjectHideFlags: 0
