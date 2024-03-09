@@ -36,13 +36,13 @@ public class GameManager : MonoBehaviour
         gamePanel.SetActive(false);
         startPanel.SetActive(true);
         endPanel.SetActive(false);
+        Time.timeScale = 1;
     }
 
     private void Update()
     {
         if (Input.anyKeyDown && !gameStarted)
         {
-            Time.timeScale = 1;
             startPanel.SetActive(false);
             gamePanel.SetActive(true);
             gameStarted = true;
