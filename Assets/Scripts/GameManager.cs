@@ -25,6 +25,8 @@ public class GameManager : MonoBehaviour
     private SpawnerManager spawnerManager;
     [SerializeField]
     private TextMeshProUGUI endScoreText;
+    [SerializeField]
+    private Data data;
 
 
     private void Awake()
@@ -32,11 +34,20 @@ public class GameManager : MonoBehaviour
         Application.targetFrameRate = 120;
     }
     private void Start()
-    {
-        gamePanel.SetActive(false);
-        startPanel.SetActive(true);
-        endPanel.SetActive(false);
+    {   if (data.isGameRestarted)
+        {
+            startPanel.SetActive(false);
+            gamePanel.SetActive(true);
+            endPanel.SetActive(false);
+        }
+        else
+        {
+            startPanel.SetActive(true);
+            gamePanel.SetActive(false);
+            endPanel.SetActive(false);
+        }
         Time.timeScale = 1;
+        
     }
 
     private void Update()
@@ -49,6 +60,7 @@ public class GameManager : MonoBehaviour
         }
         if(isGameOver && Input.anyKeyDown)
         {
+            data.isGameRestarted = true;
             UnityEngine.SceneManagement.SceneManager.LoadScene(0);
         }
         spawnerManager.UpdateSpawnerInterval(); 
@@ -76,8 +88,7 @@ public class GameManager : MonoBehaviour
         gamePanel.SetActive(false);
         endScoreText.text = "Score: " + points;
 
-    }   
-    
-
+    }
+   
     
 }

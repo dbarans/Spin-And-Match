@@ -2318,6 +2318,7 @@ MonoBehaviour:
   isGameOver: 0
   spawnerManager: {fileID: 1614007646}
   endScoreText: {fileID: 830393810}
+  data: {fileID: 11400000, guid: 73e6b024b0f1cd845ac1fe70477ca812, type: 2}
 --- !u!1 &1654495187
 GameObject:
   m_ObjectHideFlags: 0
