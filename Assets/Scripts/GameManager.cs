@@ -1,4 +1,6 @@
+using System.Collections;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -27,6 +29,7 @@ public class GameManager : MonoBehaviour
     private TextMeshProUGUI endScoreText;
     [SerializeField]
     private Data data;
+    private bool canClick = false;
 
 
     private void Awake()
@@ -34,13 +37,13 @@ public class GameManager : MonoBehaviour
         Application.targetFrameRate = 120;
     }
     private void Start()
-    {   if (data.isGameRestarted)
+    {   if (data.isGameRestarted)               //after restart
         {
             startPanel.SetActive(false);
             gamePanel.SetActive(true);
             endPanel.SetActive(false);
         }
-        else
+        else                               // first start of the game
         {
             startPanel.SetActive(true);
             gamePanel.SetActive(false);
@@ -52,18 +55,19 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.anyKeyDown && !gameStarted)
+        if (Input.anyKeyDown && !gameStarted)  // start of the game
         {
             startPanel.SetActive(false);
             gamePanel.SetActive(true);
             gameStarted = true;
         }
-        if(isGameOver && Input.anyKeyDown)
+      
+        if(isGameOver && Input.anyKeyDown && canClick)      // restart of the game
         {
             data.isGameRestarted = true;
             UnityEngine.SceneManagement.SceneManager.LoadScene(0);
         }
-        spawnerManager.UpdateSpawnerInterval(); 
+        spawnerManager.UpdateSpawnerInterval();  // update the interval of the spawner
     }
 
     public void SameColorCollision()
@@ -87,8 +91,15 @@ public class GameManager : MonoBehaviour
         endPanel.SetActive(true);
         gamePanel.SetActive(false);
         endScoreText.text = "Score: " + points;
+        StartCoroutine(DelayRestart(1));
 
     }
-   
-    
+    private IEnumerator DelayRestart(float seconds)
+    {
+        canClick = false;
+        yield return new WaitForSecondsRealtime(seconds);
+        canClick = true;
+    }
+
+
 }
